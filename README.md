@@ -2,9 +2,16 @@
 
 This project's origin [here](https://github.com/weaviate/weaviate-examples/tree/main/plant-information-searching-using-NodeJs).
 
-(TODO: Add Description)
+## Description
+The goal of this project is to enable semantic search capabilities, allowing users to retrieve information of plants with a focus on meaning and context rather than just keywords. This is carried out using weaviate client!
 
 https://user-images.githubusercontent.com/75658681/162991750-46430744-e68f-4990-98c7-a41f80d130c0.mp4
+
+## Used technologies
+1. Docker
+2. JavaScript
+3. CSS
+4. Weaviate client
 
 ## Prerequisites
 1. Install Docker and Docker-Compose
