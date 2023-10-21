@@ -29,3 +29,21 @@ On http://localhost:4000/ , Use the search bar to search for the specific plant 
 
 ## Dataset license
 The dataset used for this example can be found here: https://data.world/sharon/vegetables-herbs-and-edible-flowers 
+
+## Test Cases
+1: Install jest and supertest:
+Make sure you have Jest and Supertest installed in your project. You can install them using npm or yarn:
+```
+npm install jest supertest --save-dev
+# or
+yarn add jest supertest --dev
+```
+2: Run the tests:
+
+You can now run the tests using the jest command:
+```
+npx jest
+# or
+yarn jest
+```
+Make sure to replace 'your-route-here' and 'your-search-query-here' with the actual routes and search queries you want to test. Similarly, replace 'your-plant-name-here' with the plant name you want to test.
