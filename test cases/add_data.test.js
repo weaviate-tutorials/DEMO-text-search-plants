@@ -1,24 +1,31 @@
-const weaviate = require("weaviate-client");
-const app = require('./add_data'); // Assuming 'add_data.js' exports the app
+const weaviate = require('weaviate-client');
 
-describe('Add Data Tests', () => {
-  let server;
+const client = weaviate.client({
+  scheme: 'http',
+  host: 'localhost:8080',
+});
 
-  beforeAll(() => {
-    server = app.listen(4000); // Start the server before tests
-  });
+test('should create a new class named Plants', async () => {
+  const schema = await client.schema.getSchema();
+  expect(schema.classes).toContain('Plants');
+});
 
-  afterAll((done) => {
-    server.close(done); // Close the server after tests
-  });
+test('should add 15 plant objects to the Plants class', async () => {
+  const plants = await client.data.getObjects({ className: 'Plants' });
+  expect(plants.length).toBe(15);
+});
 
-  it('should test something...', async () => {
-    // Write your test cases for add_data.js here using Supertest
-    // Example: Send HTTP requests and assert the responses
-    const response = await request(server)
-      .get('/your-route-here')
-      .expect(200);
-
-    // Add your assertions here
-  });
+test('should add the correct properties to each plant object', async () => {
+  const plant = await client.data.getObject({ className: 'Plants', id: '1' });
+  expect(plant).toHaveProperty('title');
+  expect(plant).toHaveProperty('alternateName');
+  expect(plant).toHaveProperty('sowInstructions');
+  expect(plant).toHaveProperty('spaceInstructions');
+  expect(plant).toHaveProperty('harvestInstructions');
+  expect(plant).toHaveProperty('compatiblePlants');
+  expect(plant).toHaveProperty('avoidInstructions');
+  expect(plant).toHaveProperty('culinaryHints');
+  expect(plant).toHaveProperty('culinaryPreservation');
+  expect(plant).toHaveProperty('url');
+  expect(plant).toHaveProperty('imageLinks');
 });
